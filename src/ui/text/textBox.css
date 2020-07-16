@@ -1,0 +1,13 @@
+.text-box{
+    position: absolute;
+}
+
+.text-box p{
+    position: absolute;
+    display: inline-block;
+    font-family: ui-font;
+    font-size: 32px;
+    white-space: nowrap;
+
+    transform-origin: top left;
+}

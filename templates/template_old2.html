@@ -1,0 +1,99 @@
+ <!DOCTYPE html>
+ <html>
+     <head>
+         <meta charset="utf-8">
+         <meta id="viewport" name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
+
+         <script>
+             var clickTag='<%=iosLink %>'
+             var iosLink="<%=iosLink %>";
+             var androidLink="<%=androidLink %>";
+
+             var userAgent = navigator.userAgent || navigator.vendor;
+             clickTag = /android/i.test(userAgent)?androidLink:iosLink;
+
+
+            var link=iosLink;
+            var link2=androidLink;
+            var lp_url=clickTag;
+             
+            var loaded=5,total=100;
+            
+            function loadUpdate(){
+                loaded+=0.2;
+                var bar= document.getElementById("bar");
+
+                if(loaded>101){
+                    loaded=101;
+                }
+                else{
+                    setTimeout(loadUpdate,50);
+                }
+                if(bar){
+                    bar.style.width=loaded+"%";
+                }
+                    
+            };
+            setTimeout(loadUpdate,50);
+            
+            function gameStart()
+            {
+                if(!app)return;
+                app.gameStart();
+            }
+            
+            function gameClose()
+            {
+                if(!app)return;
+                app.gameClose();
+                
+            }
+
+            function mobvistaGameReady(){
+                window.gameReady && window.gameReady();
+            }
+            
+            function mobvistaGameEnd(){
+                window.gameEnd && window.gameEnd();
+            }
+         
+         </script>
+         
+         <style>
+            
+             body{
+                 touch-action: none;
+             }
+             /*canvas{
+                 z-index: 9999;
+                 touch-action: none;
+             }*/
+             
+             @font-face {
+                font-family: 'ui-font';
+                src: url("<%=require('../assets/LilitaOne-Regular.ttf') %>");
+                
+             }
+         </style>
+     </head>
+     <body touch-action="none">
+         <div style="font-family:ui-font">.</div>
+         <div id="ui"></div>
+         <div id="preloader">
+            <div id="game-logo">
+                <img src="<%=require('../assets/core/game_logo.png') %>">
+            </div>
+            
+             <div id="demo-loading">
+                <img src="<%=require('../assets/core/demo_loading.png') %>">
+             </div>
+             <div id="progress-bar">
+                <div id="bar"></div> 
+                <div id="progress-bg"></div> 
+            </div>
+            <div id="pf-logo">
+             <img src="<%=require('../assets/core/pf_logo.png') %>">
+            </div>
+         </div>
+     </body>
+ </html>

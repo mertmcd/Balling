@@ -1,0 +1,32 @@
+
+.svg-button{
+    position: relative;
+    display: inline-block;
+    
+    width: 484px;
+    height: 137px;
+    
+    animation-name: pulse;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+.svg-button span{
+    font-size: 60px;
+    font-family: ui-font;
+    color:#ffffff;
+    -webkit-text-stroke: 2px #000000;
+
+    text-shadow: #000000 0px 8px;
+
+    position: absolute;
+
+    transform-origin: top left;
+
+    white-space: nowrap;
+
+
+
+}
+

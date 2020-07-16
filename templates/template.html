@@ -1,0 +1,160 @@
+ <!DOCTYPE html>
+ <html>
+     <head>
+         <meta charset="utf-8">
+         <meta id="viewport" name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
+
+         <script>
+             var clickTag='<%=iosLink %>'
+             var iosLink="<%=iosLink %>";
+             var androidLink="<%=androidLink %>";
+
+             var userAgent = navigator.userAgent || navigator.vendor;
+             clickTag = /android/i.test(userAgent)?androidLink:iosLink;
+
+
+            var link=iosLink;
+            var link2=androidLink;
+            var lp_url=clickTag;
+             
+            var loaded=5,total=100;
+            
+            function loadUpdate(){
+                loaded+=0.2;
+                var bar= document.getElementById("bar");
+
+                if(loaded>101){
+                    loaded=101;
+                }
+                else{
+                    setTimeout(loadUpdate,50);
+                }
+                if(bar){
+                    bar.style.width=loaded+"%";
+                }
+                    
+            };
+            setTimeout(loadUpdate,50);
+            
+            function gameStart()
+            {
+                if(!app)return;
+                app.gameStart();
+            }
+            
+            function gameClose()
+            {
+                if(!app)return;
+                app.gameClose();
+                
+            }
+
+            function mobvistaGameReady(){
+                window.gameReady && window.gameReady();
+            }
+            
+            function mobvistaGameEnd(){
+                window.gameEnd && window.gameEnd();
+            }
+
+
+            function visit0(){
+                FbPlayableAd.onCTAClick();
+            }
+            function visit1(){
+                Liftoff.open();
+            }
+            function visit2(){
+                window.install && window.install();
+            }
+            function visit3(){
+                mraid.openStoreUrl();
+            }
+            function visit4(){
+                dapi.openStoreUrl();
+            }
+            function visit5(){
+                NUC.trigger.convert();
+            }
+            function visit6(){
+                mraid.openStore(lp_url);
+            }
+            function visit7(){
+                parent.postMessage('download', '*');
+            }
+            function visit8(){
+                window.TJ_API && window.TJ_API.objectiveComplete();
+                window.TJ_API && window.TJ_API.gameplayFinished();
+                window.TJ_API && window.TJ_API.click();
+            }
+            function visit9(){
+                window.playableSDK.openAppStore();
+            }
+            function visit10(){
+                window.parent.postMessage('click_go', '*'); // '*' required
+            }
+            function visit11(){
+                mraid.open(lp_url);
+            }
+         
+         </script>
+         
+         <style>
+            
+             body{
+                 touch-action: none;
+             }
+             
+             @font-face {
+                font-family: 'ui-font';
+                src: url("<%=require('../assets/font.ttf') %>");
+                
+             }
+         </style>
+     </head>
+     <body touch-action="none">
+        <div style="font-family:ui-font; position:absolute;left:-100px">.</div>
+        <img id ="bg">
+        <div id="ui"></div>
+        
+        <!---animate div-->
+        <div id="animation_container" style="display:none; background-color:rgba(255, 255, 255, 1.00); width:500px; height:500px">
+            <canvas id="canvas" width="500" height="500" style="position: absolute; display: block; background-color:rgba(255, 255, 255, 1.00);"></canvas>
+            <div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:500px; height:500px; position: absolute; left: 0px; top: 0px; display: block;">
+            </div>
+        </div>
+
+        <div id="preloader-gear">
+            <div id = gears style="display:none;">
+                <img id="gear0" src="<%=require('../assets/core/gear_small.svg')%>" alt="gear">
+                <img id="gear1" src="<%=require('../assets/core/gear_big.svg')%>" alt="gear">
+                <img id="gear2" src="<%=require('../assets/core/gear_small.svg')%>" alt="gear">
+            </div>
+
+            <img id="pf-logo-gear" src="<%=require('../assets/core/pf_logo.png')%>">
+        </div>
+
+        <script>
+            (function(){
+                loaded = 100;
+                var gears = document.getElementById("gears");
+                if(!gears)return;
+                function scaleGears(){
+                    gears.style.display = "block";
+                    var w = window.innerWidth;
+                    var h = window.innerHeight;
+                    var scale = Math.min(w*0.5/520, h*0.3/364);
+                    gears.style.transform = "scale("+scale+")";
+                    gears.style.left = w*0.53 - 520*0.5*scale + "px";
+                    gears.style.top = h*0.5 - 364*0.5*scale + "px";
+                }
+
+                scaleGears();
+                window.addEventListener("resize", scaleGears);
+            })();
+            
+        </script>
+        <!--preloader-end-->
+
+     </body>
+ </html>

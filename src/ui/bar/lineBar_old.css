@@ -1,0 +1,38 @@
+.line-bar{
+    position: absolute;
+    text-transform: top left;
+
+    
+}
+
+.line-bar>div:first-child{
+    position: absolute;
+    /*transition: all 0.1s;*/
+}
+
+
+.line-bar>div:nth-child(2){
+    position: absolute;
+    bottom:0;
+    border-radius: 50%;
+
+}
+
+
+
+.line-bar-object{
+    position: absolute;    
+    border-radius: 50%;
+
+    max-width: 80%;
+    max-height: 80%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    display: block;
+
+}
+

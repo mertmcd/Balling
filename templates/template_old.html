@@ -1,0 +1,58 @@
+ <!DOCTYPE html>
+ <html>
+     <head>
+         <meta charset="utf-8">
+         <meta id="viewport" name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
+
+         <script>
+             clickTag='<%=iosLink %>'
+             var iosLink="<%=iosLink %>";
+             var androidLink="<%=androidLink %>";
+
+             var userAgent = navigator.userAgent || navigator.vendor;
+             clickTag = /android/i.test(userAgent)?androidLink:iosLink;
+
+
+            var link=iosLink;
+            var link2=androidLink;
+            var lp_url=clickTag;
+             
+            var loaded=5,total=100;
+            
+            function loadUpdate(){
+                loaded+=0.2;
+                var bar= document.getElementById("bar");
+
+                if(loaded>101){
+                    loaded=101;
+                }
+                else{
+                    setTimeout(loadUpdate,50);
+                }
+                if(bar){
+                    bar.style.width=loaded+"%";
+                }
+                    
+            };
+            setTimeout(loadUpdate,50);
+         
+         
+         </script>
+         
+         <style>
+             
+            @font-face {
+                font-family: 'ui-font';
+                src: url("<%=require('../assets/junegull.ttf') %>");
+             }
+             
+             
+         </style>
+     </head>
+     <body style="background: #000000">
+         <div id="ui"></div>
+
+        <img id="loading" src="<%=require('../assets/core/loading.gif') %>">
+         
+     </body>
+ </html>

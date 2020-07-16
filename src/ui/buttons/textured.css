@@ -1,0 +1,29 @@
+
+.textured-btn-holder{
+    position: absolute;
+    animation-name: pulse;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    
+}
+
+.textured-btn {
+    position: relative;
+    display: inline-block;
+    transform-origin: left top;
+}
+
+
+
+
+.textured-btn p{
+    position: absolute;
+    white-space: nowrap;
+    font-size: 60px;
+    font-family: ui-font;
+    transform-origin: top left;
+    text-align: center;
+    margin: 0;
+    
+}
